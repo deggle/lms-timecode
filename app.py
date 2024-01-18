@@ -11,7 +11,7 @@ LMS_SERVER_PORT = int(os.environ['LMS_SERVER_PORT'])
 LMS_USERNAME = os.environ['LMS_USERNAME']
 LMS_PASSWORD = os.environ['LMS_PASSWORD']
 PLAYER_MAC = os.environ['PLAYER_MAC']
-LOOP_INTERVAL_MS = int(os.environ['LOOP_INTERVAL_MS'])
+TARGET_FPS = int(os.environ['TARGET_FPS'])
 RETRY_DELAY_SEC = int(os.environ['RETRY_DELAY_SEC'])
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 ARTNET_TARGET_IP = os.environ['ARTNET_TARGET_IP']
@@ -59,8 +59,7 @@ def main():
     global frame_count
 
     # Desired FPS
-    target_fps = 30
-    target_interval = 1.0 / target_fps
+    target_interval = 1.0 / TARGET_FPS
 
     fps_thread = threading.Thread(target=fps_counter)
     fps_thread.daemon = True
